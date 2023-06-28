@@ -48,18 +48,7 @@ java-test:
     paths:
         - target/surefire-reports/
         - target/site/jacoco/
-#pages:
-#  stage: deploy
-#  dependencies:
-#    - java-test
-#  script:
-#    - echo "CI_PIPELINE_SOURCE is " $CI_PIPELINE_SOURCE
-#    - mkdir public
-#    - mv target/site/jacoco/* public
-#  artifacts:
-#    paths:
-#      - public
-
+        
 deploy_production:
   stage: deploy
   script:
