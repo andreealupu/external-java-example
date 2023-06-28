@@ -26,7 +26,7 @@ stages:
 
 include:
   - template: Jobs/Build.gitlab-ci.yml
-#  - template: Security/Container-Scanning.gitlab-ci.yml
+  - template: Security/Container-Scanning.gitlab-ci.yml
 #  - template: Code-Quality.gitlab-ci.yml
 #  - template: Jobs/Dependency-Scanning.gitlab-ci.yml
 #  - template: Security/SAST.gitlab-ci.yml
@@ -44,24 +44,21 @@ java-test:
     reports:
       junit:
         - target/surefire-reports/TEST-*.xml
-    expose_as: 'JaCoCo'
+        - target/site/jacoco/jacoco.xml
     paths:
+        - target/surefire-reports/
         - target/site/jacoco/
-    reports:
-        metrics: target/site/jacoco/jacoco.csv
-  coverage: '/\d+.\d+ \% covered/'
-      
-pages:
-  stage: deploy
-  dependencies:
-    - java-test
-  script:
-    - echo "CI_PIPELINE_SOURCE is " $CI_PIPELINE_SOURCE
-    - mkdir public
-    - mv target/site/jacoco/* public
-  artifacts:
-    paths:
-      - public
+#pages:
+#  stage: deploy
+#  dependencies:
+#    - java-test
+#  script:
+#    - echo "CI_PIPELINE_SOURCE is " $CI_PIPELINE_SOURCE
+#    - mkdir public
+#    - mv target/site/jacoco/* public
+#  artifacts:
+#    paths:
+#      - public
 
 deploy_production:
   stage: deploy
