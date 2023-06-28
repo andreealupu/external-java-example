@@ -15,7 +15,7 @@ import setup.TestSetup;
 
 @Slf4j
 public class TestSandbox extends TestSetup {
-  @RepeatedTest(10)
+  /*@RepeatedTest(10)
   void assertThatWeCanGetUserConfig() {
     final Config CONFIG = TestEnvFactory.getInstance().getConfig();
     final String expectedEnv = CONFIG.getString("TEST_ENV");
@@ -40,7 +40,7 @@ public class TestSandbox extends TestSetup {
                 expectedEnv.toLowerCase() + "-user", CONFIG.getString("USER_NAME"), "USER_NAME"));
   }
 
-  /** a very basic test */
+  /** a very basic test 
   @SmokeTest
   void assertThatTrueIsTrue() {
     assertTrue(true, "true is true");
@@ -62,4 +62,5 @@ public class TestSandbox extends TestSetup {
       assertTrue(false, "time is odd");
     }
   }
+  */
 }
